@@ -9,3 +9,9 @@ k=0
 while (k<len(a1)):
     print(a1[k])
     k+=1
+print("doing append")
+a1.append(39)
+print(a1)
+print(a1.count(0))
+
+
