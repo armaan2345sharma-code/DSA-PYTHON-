@@ -7,6 +7,14 @@ class sll:
             return "None"
         else:
             return str(self.item) + " -> " + self.next.list_print() if self.next else str(self.item)
+    def is_empty(self):
+        return self.item is None
+    def insert_end(self,item):
+        if self.is_empty():
+            self.item = item
+            self.next = sll()
+        else:
+            self.next.insert_end(item)
 t3=sll(3)
 t2=sll(2,t3)
 t1=sll(1,t2)
