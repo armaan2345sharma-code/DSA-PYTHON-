@@ -25,4 +25,10 @@ class sll:#Making of linked list
             if temp.item==data:
                 return temp
             temp=temp.next
+    def insert_after(self,temp,data):
+        if temp is not None:
+            n=Nodes(data,temp.next)
+            temp.next
+
         return None
+        
