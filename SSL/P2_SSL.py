@@ -58,7 +58,21 @@ class sll:#Making of linked list
                 while temp.next != n:
                     temp = temp.next
                 temp.next = n.next
+    def __iter__(self):
+        return SLLIterator(self.start)
 
+#Manking iterator for linked list
+class SLLIterator:
+    def __init__(self,start):
+        self.current=start
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.current is None:
+            raise StopIteration
+        data = self.current.data
+        self.current = self.current.next
+        return data
 #Driver code
 myList=sll()
 myList.insert_start(10)
@@ -68,3 +82,6 @@ myList.insert_last(40)
 myList.insert_after(myList.search(20),25)
 myList.delete_search(10)#delete the searched data
 myList.print_list()
+for x in myList:#making the linked list iterable
+    print(x,end=" ")
+print()
