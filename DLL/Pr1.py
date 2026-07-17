@@ -13,6 +13,45 @@ class dll:#Making a doubly linked list class
         if self.start is not None:
             self.start.prev=n
         self.start=n
+    def insert_last(self,data):
+        n=Node(data)
+        if self.is_empty():
+            self.start=n
+        else:
+            temp=self.start
+            while temp.next is not None:
+                temp=temp.next
+            temp.next=n
+            n.prev=temp
+    def search(self,data):
+        temp=self.start
+        while temp is not None:
+            if data==temp.data:
+                return temp
+            temp=temp.next
+    def insert_after(self,temp,data):
+        if temp is not None:
+            n=Node(data,temp.next,temp.prev)
+            if temp.next is not None:
+                temp.next.prev=n
+            temp.next=n
+            n.prev=temp 
+    def delete_first(self):
+        if self.start is None:
+            pass
+        else:
+            self.start=self.start.next
+            self.start.prev=None
+            self.start.next.prev=None
+    def delete_last(self):
+        if self.start is None:
+            pass
+        else:
+            temp=self.start
+            while temp.next is not None:
+                temp=temp.next
+            temp.prev.next=None
+
     def print_list(self):#Printing the list
         temp=self.start
         while temp is not None:
@@ -25,4 +64,8 @@ class dll:#Making a doubly linked list class
 l=dll()
 l.insert_start(10)
 l.insert_start(20)
+l.insert_last(30)
+l.insert_after(l.search(20),25)
+l.delete_first()
+l.delete_last()
 l.print_list()
