@@ -51,7 +51,18 @@ class dll:#Making a doubly linked list class
             while temp.next is not None:
                 temp=temp.next
             temp.prev.next=None
-
+            temp.prev=None
+    def delete_after(self,data):
+        n=self.search(data)
+        if self.search is not None:
+            if n == self.start:
+                   self.delete_first
+            else:
+                temp=self.start
+                while temp.next != n:
+                    temp.next=n.next
+                n.prev=None
+                n.next.prev=temp
     def print_list(self):#Printing the list
         temp=self.start
         while temp is not None:
@@ -68,4 +79,5 @@ l.insert_last(30)
 l.insert_after(l.search(20),25)
 l.delete_first()
 l.delete_last()
+l.delete_after(10)
 l.print_list()
