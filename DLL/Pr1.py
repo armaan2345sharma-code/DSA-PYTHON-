@@ -62,7 +62,7 @@ class dll:#Making a doubly linked list class
                 while temp.next != n:
                     temp.next=n.next
                 n.prev=None
-                n.next.prev=temp
+                n.next.prev=temp   
     def print_list(self):#Printing the list
         temp=self.start
         while temp is not None:
