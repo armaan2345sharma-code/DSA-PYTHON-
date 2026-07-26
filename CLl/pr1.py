@@ -8,4 +8,5 @@ class cll:
     def is_empty(self):
         return self.start is None
     def at_start(self):
+        n=node(data,self.start)
         
