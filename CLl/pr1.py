@@ -40,9 +40,7 @@ class cll:
         n.next=temp.next
         temp.next=n
     def delete_search(self,data):
-        temp=self.search(data)
-        
-
+        temp=lo  
             
 
     def print_list(self):
