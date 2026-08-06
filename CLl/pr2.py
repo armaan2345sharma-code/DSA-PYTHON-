@@ -23,6 +23,19 @@ class CLL:
         else:
             n.next=self.last
             self.last=n
+    def search(self,data):
+        if self.is_empty():
+            return None
+        temp=self.last.next
+        while temp!=self.last:
+            if temp.item==data:
+                return temp
+            temp=temp.next
+        if temp.item==data:
+            return temp
+        return None
+
+
             
 
 #testing code
