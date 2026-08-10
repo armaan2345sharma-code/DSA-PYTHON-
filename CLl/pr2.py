@@ -34,6 +34,17 @@ class CLL:
         if temp.item==data:
             return temp
         return None
+    def insert_after(self,data,temp):
+            if temp is not None:
+                n=node(data,temp.next)
+                temp.next=n
+                if temp==self.last:
+                    print(temp.item,end=' ')
+                    temp=temp.next
+
+                    
+
+
 
 
             
