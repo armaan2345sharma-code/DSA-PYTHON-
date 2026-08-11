@@ -35,12 +35,31 @@ class CLL:
             return temp
         return None
     def insert_after(self,data,temp):
-            if temp is not None:
-                n=node(data,temp.next)
-                temp.next=n
-                if temp==self.last:
-                    print(temp.item,end=' ')
-                    temp=temp.next
+        if temp is not None:
+            n=node(data,temp.next)
+            temp.next=n
+            if temp==self.last:
+                 self.last==n
+    def print_list(self):
+        if not self.is_empty():
+            temp=self.last.next#this is location of first node
+            while temp!=None:
+                print(temp.item)
+                temp=temp.next
+            print(temp.item)
+
+#Experimental code
+k=CLL()
+k.insert_start(21)
+k.insert_last(90)
+k.insert_after(21,31)
+k.print_list
+
+            
+
+
+
+
 
                     
 
