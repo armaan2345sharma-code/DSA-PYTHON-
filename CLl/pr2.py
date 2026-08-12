@@ -14,14 +14,16 @@ class CLL:
             self.last=n
         else:
             n.next=self.last.next
-            self.last=n
+            self.last.next=n
     def insert_last(self,data):
         n=node(data)
         if self.is_empty():
-            self.last=n
             n.next=n
+            self.last=n
+            
         else:
-            n.next=self.last
+            n.next=self.last.next
+            self.last.next=n
             self.last=n
     def search(self,data):
         if self.is_empty():
@@ -35,25 +37,38 @@ class CLL:
             return temp
         return None
     def insert_after(self,data,temp):
+        n=node(data,temp.next)
         if temp is not None:
             n=node(data,temp.next)
             temp.next=n
             if temp==self.last:
-                 self.last==n
+                self.last=n
+    def delete_last(self):
+        temp=self.last.next
+        if not temp.next==self.last:
+            temp=temp.next
+            self.last=temp 
     def print_list(self):
         if not self.is_empty():
-            temp=self.last.next#this is location of first node
-            while temp!=None:
+            temp = self.last.next
+            while True:
                 print(temp.item)
-                temp=temp.next
-            print(temp.item)
+                temp = temp.next
 
+                if temp == self.last.next:
+                    break
+
+                
+   
 #Experimental code
 k=CLL()
 k.insert_start(21)
+k.insert_start(34)
 k.insert_last(90)
-k.insert_after(21,31)
-k.print_list
+k.insert_after(60,k.search(90))
+k.insert_last(56)
+k.insert_after(100,k.search(56))
+k.print_list()
 
             
 
@@ -67,8 +82,3 @@ k.print_list
 
 
             
-
-#testing code
-k=CLL()
-k.insert_start(45)
-k.insert_last(35)
