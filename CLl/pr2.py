@@ -45,9 +45,23 @@ class CLL:
                 self.last=n
     def delete_last(self):
         temp=self.last.next
-        if not temp.next==self.last:
-            temp=temp.next
-            self.last=temp 
+        if self.is_empty():
+            pass
+        else:
+            while True:
+                temp=temp.next
+                if temp.next==self.last:
+                    break
+            temp.next=self.last.next
+            self.last=temp
+    def delete_start(self):
+        if self.is_empty():
+            pass
+        elif self.last.next==self.last:
+            self.last=None
+        else:
+            self.last.next=self.last.next.next
+                
     def print_list(self):
         if not self.is_empty():
             temp = self.last.next
@@ -68,6 +82,8 @@ k.insert_last(90)
 k.insert_after(60,k.search(90))
 k.insert_last(56)
 k.insert_after(100,k.search(56))
+k.delete_last()
+k.delete_start()
 k.print_list()
 
             
