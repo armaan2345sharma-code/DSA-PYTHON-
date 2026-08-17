@@ -22,21 +22,43 @@ class cdl:
             self.start.prev.next=n
             self.start.prev=n
             self.start=n
-    def 
+    def insert_last(self,data):
+        n=node(data)
+        temp=self.start
+        if self.list_empty():
+            insert_start(n)
+        else:
+            while True:
+                temp=temp.next
+                if temp.next==self.start:
+                    break
+            n.next=temp.next
+            temp.next.prev=n
+            temp.next=n
+            n.prev=temp
+
+
+    
     def priint(self):
         temp=self.start
         if self.list_empty():
             pass
         else:
             while True:
-                temp=temp.next
+                
                 print(temp.data," ")
+                temp=temp.next
+                
+                
                 if temp==self.start:
                     break
 #Trial code 
 k=cdl()
 k.insert_start(10)
-k.insert_start(20)      
+k.insert_start(20)
+k.insert_last(67)
+
+
 
 k.priint()
 
