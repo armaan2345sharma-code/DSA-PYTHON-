@@ -36,6 +36,22 @@ class cdl:
             temp.next.prev=n
             temp.next=n
             n.prev=temp
+    def delete_last(self):
+        temp=self.start
+        if self.list_empty():
+            pass
+        else:
+            if self.start.next==self.start:
+                self.start=None
+            else:
+                while temp.next.next!=self.start:
+                    temp=temp.next
+                temp.next=self.start
+                self.start.prev=temp
+
+
+           
+
 
 
     
@@ -57,7 +73,7 @@ k=cdl()
 k.insert_start(10)
 k.insert_start(20)
 k.insert_last(67)
-
+k.delete_last()
 
 
 k.priint()
