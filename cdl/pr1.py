@@ -48,13 +48,17 @@ class cdl:
                     temp=temp.next
                 temp.next=self.start
                 self.start.prev=temp
+    def delete_start(self):
+        if self.list_empty():
+            pass
+        else:
+            if self.start.next==self.start:
+                self.start=None
+            else:
+                self.start.prev.next=self.start.next
+                self.start.next.prev=self.start.prev
+                self.start=self.start.next
 
-
-           
-
-
-
-    
     def priint(self):
         temp=self.start
         if self.list_empty():
@@ -74,6 +78,7 @@ k.insert_start(10)
 k.insert_start(20)
 k.insert_last(67)
 k.delete_last()
+k.delete_start()
 
 
 k.priint()
