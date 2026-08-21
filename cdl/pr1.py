@@ -36,6 +36,33 @@ class cdl:
             temp.next.prev=n
             temp.next=n
             n.prev=temp
+    def search(self,data):
+        temp=self.start
+        while temp is not None and temp.data!=data:
+            temp=temp.next
+        return temp 
+    def inserrt_after(self, data,value):
+        temp=self.search(data)
+        if temp==None:
+            pass
+        else:
+             n=node(value)
+             n.next=temp.next
+             temp.next.prev=n
+             temp.next=n
+             n.prev=temp
+    def delete_search(self,data):
+        temp=self.search(data)
+        if temp==self.start and self.start.next==self.start:
+            self.start=None
+        else:
+            temp.prev.next=temp.next
+            temp.next.prev=temp.prev
+
+       
+        
+
+
     def delete_last(self):
         temp=self.start
         if self.list_empty():
@@ -77,8 +104,14 @@ k=cdl()
 k.insert_start(10)
 k.insert_start(20)
 k.insert_last(67)
+k.insert_last(90)
+k.insert_last(78)
+k.insert_start(98)
 k.delete_last()
 k.delete_start()
+k.inserrt_after(10,22)
+k.delete_search(22)
+
 
 
 k.priint()
