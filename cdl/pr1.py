@@ -85,6 +85,24 @@ class cdl:
                 self.start.prev.next=self.start.next
                 self.start.next.prev=self.start.prev
                 self.start=self.start.next
+    def __iter__(self):
+        return self.cdl_iterator(self)
+    class cdl_iterator:
+        def __init__(self, cdl):
+            self.current = cdl.start
+            self.start = cdl.start
+
+        def __next__(self):
+            if self.current is None:
+                raise StopIteration
+
+            data = self.current.data
+            self.current = self.current.next
+
+            if self.current == self.start:
+                self.current = None
+
+            return data
 
     def priint(self):
         temp=self.start
@@ -112,7 +130,9 @@ k.delete_start()
 k.inserrt_after(10,22)
 k.delete_search(22)
 
-
+for i in k:
+    print(i)
+    
 
 k.priint()
 
