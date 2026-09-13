@@ -17,7 +17,6 @@ k.push(45)
 k.push(56)
 k.push(56)
 k.push(90)
-print(k.peak())
-k.pop()
-
+k.peak()
+k.is_empty
 k.printL()
