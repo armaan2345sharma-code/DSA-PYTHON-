@@ -13,7 +13,7 @@ class stack:
             count=count+1
     def push(self,data):
         n=node(data)
-        if (self.start==None) :
+        if (self.start==None) : 
             self.start=n
         else:
             n.next=self.start
