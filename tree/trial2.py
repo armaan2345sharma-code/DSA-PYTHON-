@@ -22,7 +22,9 @@ class BinarySearchTree:
                 else:
                     if temp.left==None:
                         temp.left=n
+                        break
                     temp=temp.left
+                    
     def search(self,dataa):
         temp=self.root
         while temp is not None:
@@ -35,9 +37,41 @@ class BinarySearchTree:
             elif temp.data<dataa:
                 temp=temp.right
         if temp==None:
-            print("not found")
-        if self.root==None:
-            print("tree is empty")
+            
+            if self.root==None:
+                print("tree is empty")
+            else:
+                print("not found")
+    def inorder(self):
+        result=[]
+        self.rinorder(self.root,result)
+        return result 
+    def rinorder(self,root,result):
+        if root:
+            self.rinorder(root.left,result)
+            result.append(root.data)
+            self.rinorder(root.right,result)
+    def preorder(self):
+        result=[]
+        self.rpreorder(self.root,result)
+        return result
+    def rpreorder(self,root,result):
+        if root:
+            result.append(root.data)
+            self.rpreorder(root.left,result)
+            self.rpreorder(root.right,result)
+    def postorder(self):
+        result=[]
+        self.rpostorder(self.root,result)
+        return result
+    def rpostorder(self,root,result):
+        if root:
+            self.rpostorder(root.left,result)
+            self.rpostorder(root.right,result)
+            result.append(root.data)
+
+    
+    
                            
         
                         
@@ -49,6 +83,12 @@ k.insertion(79)
 k.search(89)
 print(k.search(35))
 k.search(78)
+k.insertion(56)
+k.insertion(89)
+k.insertion(92)
+print(k.postorder())
+print(k.preorder())
+print(k.inorder())
 
 
 

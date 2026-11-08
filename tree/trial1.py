@@ -12,18 +12,27 @@ class Tree:
     ''' class NotesToRvisit:'''
     
 
-    def Transverse(self):
-        level=0
+    
+        
+    def continuesTransverse(self):
         temp=self.root 
-        def continuesTransverse(self,temp):
-            storedNodes=[]
-            while temp.right==None and temp.left!=None:
-                temp=temp.left
-                level=level+1
-            while temp.left==None and temp.right!=None:
-                temp=temp.right
-                level=level+1
-            if temp.left!=None and temp.right!=None:
-                storedNodes.append[temp]
-                temp=temp.left
-                
+        level=0
+        storedNodes=[]
+        levelNo=[]
+        while temp.right==None and temp.left!=None:
+            temp=temp.left
+            level=level+1
+        while temp.left==None and temp.right!=None:
+            temp=temp.right
+            level=level+1
+        if temp.left!=None and temp.right!=None:
+            storedNodes.append[temp]
+            levelNo.append[temp]
+            temp=temp.left
+        if temp.right==None and temp.left==None:
+            temp=storedNodes[-1]
+            storedNodes.pop[-1]
+            self.continuesTransverse()
+        if (temp.right==None and temp.left==None)and len(storedNodes==0):
+            return
+    
