@@ -69,13 +69,52 @@ class BinarySearchTree:
             self.rpostorder(root.left,result)
             self.rpostorder(root.right,result)
             result.append(root.data)
+    def minimumItemnode(self):
+        temp=self.postorder()
+        print(temp[-1])
+    def maximumItemnode(self):
+        temp=self.postorder()
+        print(temp[1]) 
+    def BstSize(self):
+        temp=len(self.postorder())
+        print(temp)
+    def deletionP(self,data):
+        temp=self.root
+        tempParent=self.root
+        while True:
+            if tempParent.data>data:
+                if tempParent.right.data==data or tempParent.left.data==data:
+                    break
+                tempParent=tempParent.left
+            if tempParent.data<data:
+                if tempParent.right==data or tempParent.left==data:
+                    break
+                tempParent=tempParent.right
+        if tempParent.left.data==data:
+            temp=tempParent.left
+        elif tempParent.right.data==data:
+            temp=tempParent.right
+        if temp.left=='/0' and temp.right=='/0':
+            if tempParent.left==temp:
+                tempParent.left=None
+            elif tempParent.right==temp:
+                tempParent.right=None
+        if (temp.left=='/0'and temp.right!='/0')or(temp.right=='/0'and temp.left!='/0'):
+            tempChild=self.root
+            if temp.right!='/0':
+               tempChild=temp.right
+            elif temp.left!='/0':
+                tempChild=temp.left
+            if tempParent.left==temp:
+                tempParent.left=tempChild
+            elif tempParent.right==temp:
+                tempParent.right=tempChild
+            
 
     
     
                            
         
-                        
-          
 k=BinarySearchTree()
 k.insertion(34)
 k.insertion(35)
@@ -89,9 +128,11 @@ k.insertion(92)
 print(k.postorder())
 print(k.preorder())
 print(k.inorder())
-
-
-
+k.minimumItemnode()
+k.maximumItemnode()
+k.BstSize()
+k.deletionP(56)
+print(k.inorder())
          
 
         
