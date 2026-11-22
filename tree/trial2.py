@@ -75,41 +75,70 @@ class BinarySearchTree:
     def maximumItemnode(self):
         temp=self.postorder()
         print(temp[1]) 
+
+    def min_item(self,temp):
+        curent=temp
+        while curent.left!=None:
+            curent=curent.left
+        return curent.data
     def BstSize(self):
         temp=len(self.postorder())
         print(temp)
-    def deletionP(self,data):
+    ''' def deletionP(self,data):
         temp=self.root
         tempParent=self.root
         while True:
             if tempParent.data>data:
-                if tempParent.right.data==data or tempParent.left.data==data:
+                if tempParent.left is not None and tempParent.left.data == data:
                     break
                 tempParent=tempParent.left
             if tempParent.data<data:
-                if tempParent.right==data or tempParent.left==data:
+                if tempParent.right is not None and tempParent.right.data == data:
                     break
                 tempParent=tempParent.right
         if tempParent.left.data==data:
             temp=tempParent.left
         elif tempParent.right.data==data:
             temp=tempParent.right
-        if temp.left=='/0' and temp.right=='/0':
+        if temp.left==None and temp.right==None:
             if tempParent.left==temp:
                 tempParent.left=None
             elif tempParent.right==temp:
                 tempParent.right=None
-        if (temp.left=='/0'and temp.right!='/0')or(temp.right=='/0'and temp.left!='/0'):
+        if (temp.left==None and temp.right!=None)or(temp.right==None and temp.left!=None):
             tempChild=self.root
-            if temp.right!='/0':
+            if temp.right!=None:
                tempChild=temp.right
-            elif temp.left!='/0':
+            elif temp.left!=None:
                 tempChild=temp.left
             if tempParent.left==temp:
                 tempParent.left=tempChild
             elif tempParent.right==temp:
                 tempParent.right=tempChild
+        if (temp.left!=None and temp.right!=None):
+           
+            Newtemp=temp.right
+            while (Newtemp.left!=None):
+                Newtemp=Newtemp.left
+            NewtempParent=temp.right
+            while(NewtempParent.left!=Newtemp):
+                NewtempParent=NewtempParent.left
             
+            if Newtemp.right==None:
+                NewtempParent.left=None
+            if Newtemp.right!=None:
+                NewtempParent.left=Newtemp.right
+                Newtemp.right=None
+            
+            if tempParent.left==temp:
+                tempParent.left=Newtemp
+                temp.right=Newtemp.right
+                temp.left=Newtemp.left
+            if tempParent.right==temp:
+                tempParent.right=Newtemp
+                temp.right=Newtemp.right
+                temp.left=Newtemp.left'''
+    
 
     
     
@@ -131,10 +160,13 @@ print(k.inorder())
 k.minimumItemnode()
 k.maximumItemnode()
 k.BstSize()
-k.deletionP(56)
+#k.deletionP(56)
 print(k.inorder())
-         
-
+k.insertion(90)
+k.insertion(93)
+k.insertion(91)
+print(k.inorder())
+print(k.min_item(k.root))
         
                     
             
