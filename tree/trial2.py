@@ -139,9 +139,31 @@ class BinarySearchTree:
                 temp.right=Newtemp.right
                 temp.left=Newtemp.left'''
     
+    def delete(self,data):
+        self.root=self.rdelete(self.root,data)
+    def rdelete(self,root,data):
+        if root is None:
+            return root
+        if data<root.data:
+            root.left=self.rdelete(root.left,data)
+        elif data>root.data:
+            root.right=self.rdelete(root.right,data)
+        else:
+            if root.left is None:
+                return root.right
+            if root.right is None:
+                return root.left
+            else:
+                if root.left is None:
+                    return root.right
+                elif root.right is None:
+                    return root.left
+                root.data=self.min_item(root.right)
+                self.rdelete(root.right,root.data)
+            return root
 
-    
-    
+
+
                            
         
 k=BinarySearchTree()
@@ -167,6 +189,8 @@ k.insertion(93)
 k.insertion(91)
 print(k.inorder())
 print(k.min_item(k.root))
+k.delete(89)
+print(k.inorder())
         
                     
             
